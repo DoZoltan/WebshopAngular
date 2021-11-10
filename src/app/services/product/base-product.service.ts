@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export abstract class BaseProductServiceService<T>
+export abstract class BaseProductService<T>
 {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(private http: HttpClient, private url: string) { }
+  constructor(protected http: HttpClient, protected url: string) { }
 
   getById(id: Number): Observable<T>
   {
