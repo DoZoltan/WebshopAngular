@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { AdminComponent } from './components/administration/admin/admin.component';
 import { UserComponent } from './components/administration/user/user.component';
@@ -26,7 +27,7 @@ import { ComponentContainerComponent } from './components/component-container/co
     DetailsPopupComponent,
     ComponentContainerComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
