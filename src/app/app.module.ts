@@ -13,7 +13,6 @@ import { LeftNavBarComponent } from './components/navigation/left-nav-bar/left-n
 import { GridComponent } from './components/product/grid/grid.component';
 import { DetailsPopupComponent } from './components/product/details-popup/details-popup.component';
 import { ComponentContainerComponent } from './components/component-container/component-container.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DetailsPopupComponent,
     ComponentContainerComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
