@@ -2,6 +2,7 @@
     <app-left-nav-bar></app-left-nav-bar>
     <div class="grid-container">
         <ag-grid-angular
+            #agGrid 
             class= "ag-theme-balham ag-grid"
             [rowData]="products"
             [columnDefs]="columnDefs">
