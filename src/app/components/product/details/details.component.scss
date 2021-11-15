@@ -1,0 +1,21 @@
+.img-container{
+    display: flex;
+    justify-content: center;
+    
+    .image{
+        max-width: 700px;
+        height: auto;
+        width: 100vh;
+        margin-top: 10px;
+    }
+}
+
+.details-content{
+    margin: 20px 0 10px 0;
+    display: flex;
+    justify-content: center;
+
+    .space-div{
+        width: 30px;
+    }
+}
