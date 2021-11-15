@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class GridComponent implements OnInit {
 
   columnDefs = [
-    { headerName: "Name", field: "ProductName" },
-    { headerName: "Brand", field: "Brand" },
-    { headerName: "Price", field: "SellPrice" }
+    { cellClass: 'grid-col', headerName: "Name", field: "ProductName", resizable: true},
+    { cellClass: 'grid-col', headerName: "Brand", field: "Brand", resizable: true},
+    { cellClass: 'grid-col', headerName: "Price", field: "SellPrice", resizable: true}
   ];
 
   products = [

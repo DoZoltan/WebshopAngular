@@ -2,4 +2,18 @@
     height: 100vh;
     display: flex;
     justify-content: flex-start;
+
+    .grid-container{
+        height: 100vh;
+
+        .ag-grid{
+            width: 600px; 
+            height: 100vh;
+            padding: 20px 20px 20px 20px;
+        }
+    }
+
+    .details-container{
+        height: 100vh;
+    }
 }

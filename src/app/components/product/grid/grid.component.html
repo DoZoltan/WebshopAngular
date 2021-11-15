@@ -1,8 +1,13 @@
 <div class="product-container">
     <app-left-nav-bar></app-left-nav-bar>
-    <ag-grid-angular style="width: 500px; height: 500px;"
-        class= "ag-theme-balham"
-        [rowData]="products"
-        [columnDefs]="columnDefs">
-    </ag-grid-angular>
+    <div class="grid-container">
+        <ag-grid-angular
+            class= "ag-theme-balham ag-grid"
+            [rowData]="products"
+            [columnDefs]="columnDefs">
+        </ag-grid-angular>
+    </div>
+    <div class="details-container">
+        <app-details></app-details>
+    </div>
 </div>
