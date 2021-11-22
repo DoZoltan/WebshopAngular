@@ -6,19 +6,19 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a routerLink="/products/cpu" class="nav-link active" aria-current="page">
+            <a routerLink="/products/cpu" class="nav-link text-white" [ngClass]="isActive('/products/cpu') ? 'active' : ''">
                 <svg class="bi me-2" width="16" height="16"></svg>
                 CPU
             </a>
         </li>
         <li>
-            <a routerLink="/products/ram" class="nav-link text-white">
+            <a routerLink="/products/ram" class="nav-link text-white" [ngClass]="isActive('/products/ram') ? 'active' : ''">
                 <svg class="bi me-2" width="16" height="16"></svg>
                 RAM
             </a>
         </li>
         <li>
-            <a routerLink="/products/motherboard" class="nav-link text-white">
+            <a routerLink="/products/motherboard" class="nav-link text-white" [ngClass]="isActive('/products/motherboard') ? 'active' : ''">
                 <svg class="bi me-2" width="16" height="16"></svg>
                 Motherboard
             </a>
