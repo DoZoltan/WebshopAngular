@@ -1,9 +1,9 @@
 export interface IBaseProduct
 {
-    ID: Number,
-    ProductName: String,
-    Brand: String,
-    ImgURL: String;
-    AcquisitionPrice: Number,
-    SellPrice: Number,
+    iD: Number,
+    productName: String,
+    brand: String,
+    imgURL: String;
+    acquisitionPrice: Number,
+    sellPrice: Number,
 }

@@ -21,9 +21,9 @@ export class GridComponent implements OnInit {
   currentRoute: string;
 
   columnDefs = [
-    { cellClass: 'grid-col', headerName: "Name", field: "ProductName", resizable: true, sortable: true, filter: true},
-    { cellClass: 'grid-col', headerName: "Brand", field: "Brand", resizable: true, sortable: true, filter: true},
-    { cellClass: 'grid-col', headerName: "Price", field: "SellPrice", resizable: true, sortable: true, filter: true}
+    { cellClass: 'grid-col', headerName: "Name", field: "productName", resizable: true, sortable: true, filter: true},
+    { cellClass: 'grid-col', headerName: "Brand", field: "brand", resizable: true, sortable: true, filter: true},
+    { cellClass: 'grid-col', headerName: "Price", field: "sellPrice", resizable: true, sortable: true, filter: true}
   ];
 
   products: IBaseProductDTO[];
@@ -53,9 +53,9 @@ export class GridComponent implements OnInit {
   getCpus(): IBaseProductDTO[]
   {
     let Cpus: IBaseProductDTO[] = [
-      { Id: 1, ProductName: 'CPU 1', Brand: 'asd', SellPrice: 100 },
-      { Id: 2, ProductName: 'CPU 2', Brand: 'dsa', SellPrice: 110 },
-      { Id: 3, ProductName: 'CPU 3', Brand: 'sda', SellPrice: 120 },
+      { id: 1, productName: 'CPU 1', brand: 'asd', sellPrice: 100 },
+      { id: 2, productName: 'CPU 2', brand: 'dsa', sellPrice: 110 },
+      { id: 3, productName: 'CPU 3', brand: 'sda', sellPrice: 120 },
     ]
     
     return Cpus;
@@ -64,9 +64,9 @@ export class GridComponent implements OnInit {
   getRams(): IBaseProductDTO[]
   {
     let Cpus: IBaseProductDTO[] = [
-      { Id: 1, ProductName: 'RAM 1', Brand: 'asd', SellPrice: 100 },
-      { Id: 2, ProductName: 'RAM 2', Brand: 'dsa', SellPrice: 110 },
-      { Id: 3, ProductName: 'RAM 3', Brand: 'sda', SellPrice: 120 },
+      { id: 1, productName: 'RAM 1', brand: 'asd', sellPrice: 100 },
+      { id: 2, productName: 'RAM 2', brand: 'dsa', sellPrice: 110 },
+      { id: 3, productName: 'RAM 3', brand: 'sda', sellPrice: 120 },
     ]
     
     return Cpus;
@@ -75,9 +75,9 @@ export class GridComponent implements OnInit {
   getMotherboards(): IBaseProductDTO[]
   {
     let Cpus: IBaseProductDTO[] = [
-      { Id: 1, ProductName: 'Moth 1', Brand: 'asd', SellPrice: 100 },
-      { Id: 2, ProductName: 'Moth 2', Brand: 'dsa', SellPrice: 110 },
-      { Id: 3, ProductName: 'Moth 3', Brand: 'sda', SellPrice: 120 },
+      { id: 1, productName: 'Moth 1', brand: 'asd', sellPrice: 100 },
+      { id: 2, productName: 'Moth 2', brand: 'dsa', sellPrice: 110 },
+      { id: 3, productName: 'Moth 3', brand: 'sda', sellPrice: 120 },
     ]
     
     return Cpus;
@@ -87,13 +87,13 @@ export class GridComponent implements OnInit {
   {
     switch (this.currentRoute) {
       case '/products/cpu':
-        this.cpuService.getById(event.data.Id).subscribe(product => this.details.setDetails(product));
+        this.cpuService.getById(event.data.id).subscribe(product => this.details.setDetails(product));
         break;
       case '/products/ram':
-        this.ramService.getById(event.data.Id).subscribe(product => this.details.setDetails(product));
+        this.ramService.getById(event.data.id).subscribe(product => this.details.setDetails(product));
         break;
       case '/products/motherboard':
-        this.motherboardService.getById(event.data.Id).subscribe(product => this.details.setDetails(product));
+        this.motherboardService.getById(event.data.id).subscribe(product => this.details.setDetails(product));
         break;
     }
   }

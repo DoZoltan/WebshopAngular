@@ -1,7 +1,7 @@
 export interface IBaseProductDTO 
 {
-    Id: Number,
-    ProductName: String,
-    Brand: String,
-    SellPrice: Number,
+    id: Number,
+    productName: String,
+    brand: String,
+    sellPrice: Number,
 }
