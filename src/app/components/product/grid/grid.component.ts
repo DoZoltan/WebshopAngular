@@ -85,24 +85,17 @@ export class GridComponent implements OnInit {
 
   getProductDetailsById(event: any) 
   {
-    //let selectedProduct: IBaseProduct;
-    let productPromise: Observable<IBaseProduct>;
-
     switch (this.currentRoute) {
       case '/products/cpu':
-        console.log('event.data.Id',event.data.Id);
-        this.details.setDetails(this.cpuService.getById(event.data.Id));
+        this.cpuService.getById(event.data.Id).subscribe(product => this.details.setDetails(product));
         break;
       case '/products/ram':
-        this.details.setDetails(this.ramService.getById(event.data.Id));
+        this.ramService.getById(event.data.Id).subscribe(product => this.details.setDetails(product));
         break;
       case '/products/motherboard':
-        this.details.setDetails(this.motherboardService.getById(event.data.Id));
+        this.motherboardService.getById(event.data.Id).subscribe(product => this.details.setDetails(product));
         break;
     }
-
-
-    //this.details.setDetails(productPromise);
   }
 
 }
