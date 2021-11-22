@@ -1,73 +1,126 @@
-<div class="img-container">
-    <div>
-        <img class="image" src="https://dummyimage.com/1920x1080/000000/fff.jpg" alt="No IMG :(">
-    </div>
+<div *ngIf="product">
+  <div class="img-container">
+      <div>
+          <img class="image" src="https://dummyimage.com/1920x1080/000000/fff.jpg" alt="No IMG :(">
+      </div>
+  </div>
+  <div class="details-content">
+      <div class="list-group">
+          <div class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Name</h5>
+            </div>
+            <p class="mb-1">{{product.productName}}</p>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Brand</h5>
+            </div>
+            <p class="mb-1">{{product.brand}}</p>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Price</h5>
+            </div>
+            <p class="mb-1">{{product.sellPrice}}</p>
+          </div>
+          <!-- CPU / RAM -->
+          <div *ngIf="isProductACpu || isProductARam">
+            <div class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">MHZ</h5>
+              </div>
+              <p class="mb-1">{{product.speed}}</p>
+            </div>
+            <div class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Socket</h5>
+              </div>
+              <p class="mb-1">{{product.socketType}}</p>
+            </div>
+          </div>
+          <!-- Motherboard -->
+          <div *ngIf="isProductAMotherboard">
+            <div class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">USB3 Sockets</h5>
+              </div>
+              <p class="mb-1">{{product.usb3Amount}}</p>
+            </div>
+            <div class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">WIFI</h5>
+              </div>
+              <p class="mb-1">{{product.wifi}}</p>
+            </div>
+          </div>
+      </div>
+      <div class="space-div"></div>
+      <div class="list-group">
+        <!-- CPU -->
+        <div *ngIf="isProductACpu">
+          <div class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">L3 Cache</h5>
+            </div>
+            <p class="mb-1">{{product.l3Cache}}</p>
+          </div>
+          <div class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Core Number</h5>
+            </div>
+            <p class="mb-1">{{product.coreNumber}}</p>
+          </div>
+        </div> 
+        <!-- RAM -->
+        <div *ngIf="isProductARam">
+          <div *ngIf="product.gb" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">GB</h5>
+            </div>
+            <p class="mb-1">{{product.gb}}</p>
+          </div>
+          <div *ngIf="product.delay" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Delay</h5>
+            </div>
+            <p class="mb-1">{{product.delay}}</p>
+          </div>
+        </div>
+        <!-- Motherboard -->
+        <div *ngIf="isProductAMotherboard">
+          <div class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Size standard</h5>
+            </div>
+            <p class="mb-1">{{product.sizeStandard}}</p>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">CPU Socket</h5>
+            </div>
+            <p class="mb-1">{{product.cpuSocketType}}</p>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Memory Socket</h5>
+            </div>
+            <p class="mb-1">{{product.memorySocketType}}</p>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Max Memory</h5>
+            </div>
+            <p class="mb-1">{{product.maxMemorySize}}</p>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Memory socket number</h5>
+            </div>
+            <p class="mb-1">{{product.numberOfMemorySockets}}</p>
+          </div>
+        </div>
+      </div>
+  </div>
 </div>
-<div class="details-content">
-    <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">List group item heading</h5>
-            </div>
-            <p class="mb-1">Some placeholder content in a paragraph.</p>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">List group item heading</h5>
-            </div>
-            <p class="mb-1">Some placeholder content in a paragraph.</p>
-        </a>
-    </div>
-    <div class="space-div"></div>
-    <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">List group item heading</h5>
-            </div>
-            <p class="mb-1">Some placeholder content in a paragraph.</p>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">List group item heading</h5>
-            </div>
-            <p class="mb-1">Some placeholder content in a paragraph.</p>
-        </a>
-    </div>
-</div>
-
+<div *ngIf="!product">Select a product</div>
