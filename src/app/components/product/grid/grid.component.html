@@ -5,7 +5,8 @@
             #agGrid 
             class= "ag-theme-balham ag-grid"
             [rowData]="products"
-            [columnDefs]="columnDefs">
+            [columnDefs]="columnDefs"
+            (rowClicked)="getProductDetailsById($event)">
         </ag-grid-angular>
     </div>
     <div class="details-container">

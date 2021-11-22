@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { RamService } from './../../../services/product/ram.service';
+import { CpuService } from './../../../services/product/cpu.service';
+import { IBaseProduct } from './../../../interfaces/products/ibase-product';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { AgGridAngular } from 'ag-grid-angular';
 import { IBaseProductDTO } from 'src/app/interfaces/dto/ibase-product-dto';
+import { DetailsComponent } from '../details/details.component';
+import { MotherboardService } from 'src/app/services/product/motherboard.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-grid',
@@ -8,6 +15,10 @@ import { IBaseProductDTO } from 'src/app/interfaces/dto/ibase-product-dto';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent implements OnInit {
+  @ViewChild('agGrid', { static: false }) agGrid: AgGridAngular;
+  @ViewChild(DetailsComponent) details: DetailsComponent;
+
+  currentRoute: string;
 
   columnDefs = [
     { cellClass: 'grid-col', headerName: "Name", field: "ProductName", resizable: true, sortable: true, filter: true},
@@ -15,19 +26,18 @@ export class GridComponent implements OnInit {
     { cellClass: 'grid-col', headerName: "Price", field: "SellPrice", resizable: true, sortable: true, filter: true}
   ];
 
-  products: IBaseProductDTO[] = [
-    { ProductName: 'asd', Brand: 'asd', SellPrice: 100 },
-    { ProductName: 'das', Brand: 'dsa', SellPrice: 110 },
-    { ProductName: 'sad', Brand: 'sda', SellPrice: 120 },
-  ];
+  products: IBaseProductDTO[];
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, 
+    private cpuService: CpuService, 
+    private ramService: RamService, 
+    private motherboardService: MotherboardService) { }
 
   ngOnInit(): void
   {
-    const currentRoute = this.route.url
+    this.currentRoute = this.route.url
 
-    switch (currentRoute) {
+    switch (this.currentRoute) {
       case '/products/cpu':
         this.products = this.getCpus();
         break;
@@ -43,9 +53,9 @@ export class GridComponent implements OnInit {
   getCpus(): IBaseProductDTO[]
   {
     let Cpus: IBaseProductDTO[] = [
-      { ProductName: 'CPU 1', Brand: 'asd', SellPrice: 100 },
-      { ProductName: 'CPU 2', Brand: 'dsa', SellPrice: 110 },
-      { ProductName: 'CPU 3', Brand: 'sda', SellPrice: 120 },
+      { Id: 1, ProductName: 'CPU 1', Brand: 'asd', SellPrice: 100 },
+      { Id: 2, ProductName: 'CPU 2', Brand: 'dsa', SellPrice: 110 },
+      { Id: 3, ProductName: 'CPU 3', Brand: 'sda', SellPrice: 120 },
     ]
     
     return Cpus;
@@ -54,9 +64,9 @@ export class GridComponent implements OnInit {
   getRams(): IBaseProductDTO[]
   {
     let Cpus: IBaseProductDTO[] = [
-      { ProductName: 'RAM 1', Brand: 'asd', SellPrice: 100 },
-      { ProductName: 'RAM 2', Brand: 'dsa', SellPrice: 110 },
-      { ProductName: 'RAM 3', Brand: 'sda', SellPrice: 120 },
+      { Id: 1, ProductName: 'RAM 1', Brand: 'asd', SellPrice: 100 },
+      { Id: 2, ProductName: 'RAM 2', Brand: 'dsa', SellPrice: 110 },
+      { Id: 3, ProductName: 'RAM 3', Brand: 'sda', SellPrice: 120 },
     ]
     
     return Cpus;
@@ -65,12 +75,34 @@ export class GridComponent implements OnInit {
   getMotherboards(): IBaseProductDTO[]
   {
     let Cpus: IBaseProductDTO[] = [
-      { ProductName: 'Moth 1', Brand: 'asd', SellPrice: 100 },
-      { ProductName: 'Moth 2', Brand: 'dsa', SellPrice: 110 },
-      { ProductName: 'Moth 3', Brand: 'sda', SellPrice: 120 },
+      { Id: 1, ProductName: 'Moth 1', Brand: 'asd', SellPrice: 100 },
+      { Id: 2, ProductName: 'Moth 2', Brand: 'dsa', SellPrice: 110 },
+      { Id: 3, ProductName: 'Moth 3', Brand: 'sda', SellPrice: 120 },
     ]
     
     return Cpus;
+  }
+
+  getProductDetailsById(event: any) 
+  {
+    //let selectedProduct: IBaseProduct;
+    let productPromise: Observable<IBaseProduct>;
+
+    switch (this.currentRoute) {
+      case '/products/cpu':
+        console.log('event.data.Id',event.data.Id);
+        this.details.setDetails(this.cpuService.getById(event.data.Id));
+        break;
+      case '/products/ram':
+        this.details.setDetails(this.ramService.getById(event.data.Id));
+        break;
+      case '/products/motherboard':
+        this.details.setDetails(this.motherboardService.getById(event.data.Id));
+        break;
+    }
+
+
+    //this.details.setDetails(productPromise);
   }
 
 }
