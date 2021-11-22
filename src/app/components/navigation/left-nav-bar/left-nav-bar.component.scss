@@ -1,4 +1,8 @@
 .sidebar-size{
     height: 100vh;
     width: 230px;
+
+    .search-input{
+        max-width: 160px;
+    }
 }
