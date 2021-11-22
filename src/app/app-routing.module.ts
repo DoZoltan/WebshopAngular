@@ -4,8 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { GridComponent } from './components/product/grid/grid.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/products', pathMatch: 'full' },
-  { path: 'products', component: GridComponent },
+  { path: '', redirectTo: '/products/cpu', pathMatch: 'full' },
   { path: 'products/cpu', component: GridComponent },
   { path: 'products/ram', component: GridComponent },
   { path: 'products/motherboard', component: GridComponent },
