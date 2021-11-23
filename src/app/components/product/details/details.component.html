@@ -32,11 +32,23 @@
               </div>
               <p class="mb-1">{{product.speed}}</p>
             </div>
+          </div>
+          <!-- CPU -->
+          <div *ngIf="isProductACpu">
             <div class="list-group-item list-group-item-action">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">Socket</h5>
               </div>
-              <p class="mb-1">{{product.socketType}}</p>
+              <p class="mb-1">{{getCpuSocketType(product.socketType)}}</p>
+            </div>
+          </div>
+          <!-- RAM -->
+          <div *ngIf="isProductARam">
+            <div class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Socket</h5>
+              </div>
+              <p class="mb-1">{{getRamSocketType(product.socketType)}}</p>
             </div>
           </div>
           <!-- Motherboard -->
@@ -93,19 +105,19 @@
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">Size standard</h5>
             </div>
-            <p class="mb-1">{{product.sizeStandard}}</p>
+            <p class="mb-1">{{getMotherboardSizeStandardType(product.sizeStandard)}}</p>
           </div>
           <div class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">CPU Socket</h5>
             </div>
-            <p class="mb-1">{{product.cpuSocketType}}</p>
+            <p class="mb-1">{{getCpuSocketType(product.cpuSocketType)}}</p>
           </div>
           <div class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">Memory Socket</h5>
             </div>
-            <p class="mb-1">{{product.memorySocketType}}</p>
+            <p class="mb-1">{{getRamSocketType(product.memorySocketType)}}</p>
           </div>
           <div class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
