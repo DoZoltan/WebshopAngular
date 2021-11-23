@@ -1,13 +1,11 @@
 import { RamService } from './../../../services/product/ram.service';
 import { CpuService } from './../../../services/product/cpu.service';
-import { IBaseProduct } from './../../../interfaces/products/ibase-product';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AgGridAngular } from 'ag-grid-angular';
-import { IBaseProductDTO } from 'src/app/interfaces/dto/ibase-product-dto';
 import { DetailsComponent } from '../details/details.component';
 import { MotherboardService } from 'src/app/services/product/motherboard.service';
-import { Observable } from 'rxjs';
+import { IBaseProduct } from 'src/app/interfaces/products/ibase-product';
 
 @Component({
   selector: 'app-grid',
@@ -26,7 +24,7 @@ export class GridComponent implements OnInit {
     { cellClass: 'grid-col', headerName: "Price", field: "sellPrice", resizable: true, sortable: true, filter: true}
   ];
 
-  products: IBaseProductDTO[];
+  products: IBaseProduct[];
 
   constructor(private route: Router, 
     private cpuService: CpuService, 
@@ -39,48 +37,30 @@ export class GridComponent implements OnInit {
 
     switch (this.currentRoute) {
       case '/products/cpu':
-        this.products = this.getCpus();
+        this.getCpus();
         break;
       case '/products/ram':
-        this.products = this.getRams();
+        this.getRams();
         break;
       case '/products/motherboard':
-        this.products = this.getMotherboards();
+        this.getMotherboards();
         break;
     }
   }
 
-  getCpus(): IBaseProductDTO[]
+  getCpus()
   {
-    let Cpus: IBaseProductDTO[] = [
-      { id: 1, productName: 'CPU 1', brand: 'asd', sellPrice: 100 },
-      { id: 2, productName: 'CPU 2', brand: 'dsa', sellPrice: 110 },
-      { id: 3, productName: 'CPU 3', brand: 'sda', sellPrice: 120 },
-    ]
-    
-    return Cpus;
+    this.cpuService.getAll().subscribe(cpu => this.products = cpu);
   }
 
-  getRams(): IBaseProductDTO[]
+  getRams()
   {
-    let Cpus: IBaseProductDTO[] = [
-      { id: 1, productName: 'RAM 1', brand: 'asd', sellPrice: 100 },
-      { id: 2, productName: 'RAM 2', brand: 'dsa', sellPrice: 110 },
-      { id: 3, productName: 'RAM 3', brand: 'sda', sellPrice: 120 },
-    ]
-    
-    return Cpus;
+    this.ramService.getAll().subscribe(ram => this.products = ram);
   }
 
-  getMotherboards(): IBaseProductDTO[]
-  {
-    let Cpus: IBaseProductDTO[] = [
-      { id: 1, productName: 'Moth 1', brand: 'asd', sellPrice: 100 },
-      { id: 2, productName: 'Moth 2', brand: 'dsa', sellPrice: 110 },
-      { id: 3, productName: 'Moth 3', brand: 'sda', sellPrice: 120 },
-    ]
-    
-    return Cpus;
+  getMotherboards()
+  { 
+    this.motherboardService.getAll().subscribe(motherboard => this.products = motherboard);
   }
 
   getProductDetailsById(event: any) 
