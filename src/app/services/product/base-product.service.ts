@@ -15,9 +15,9 @@ export abstract class BaseProductService<T>
     return this.http.get<T>(fullUrl);
   }
 
-  getAll(): Observable<T>
+  getAll(): Observable<T[]>
   {
-    return this.http.get<T>(this.url);
+    return this.http.get<T[]>(this.url);
   }
 
   addNew(product: T): Observable<T>
