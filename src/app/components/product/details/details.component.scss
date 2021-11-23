@@ -19,3 +19,18 @@
         width: 30px;
     }
 }
+
+.no-product-container{
+    display: flex;
+    justify-content: center;
+
+    .no-product-message{
+        max-width: 700px;
+        height: auto;
+        width: 100vh;
+        text-align: center;
+        font-size: 22px;
+        background-color:lightblue;
+        margin-top: 50px;
+    }
+}
