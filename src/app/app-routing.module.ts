@@ -1,3 +1,4 @@
+import { AuthenticationComponent } from './components/administration/authentication/authentication.component';
 import { UserComponent } from './components/administration/user/user.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,7 +9,8 @@ const routes: Routes = [
   { path: 'products/cpu', component: GridComponent },
   { path: 'products/ram', component: GridComponent },
   { path: 'products/motherboard', component: GridComponent },
-  { path: 'user', component: UserComponent }
+  { path: 'user', component: UserComponent },
+  { path: 'login', component: AuthenticationComponent }
 ];
 
 @NgModule({
