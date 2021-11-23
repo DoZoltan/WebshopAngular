@@ -1,3 +1,4 @@
+import { RegistrationComponent } from './components/administration/registration/registration.component';
 import { AuthenticationComponent } from './components/administration/authentication/authentication.component';
 import { UserComponent } from './components/administration/user/user.component';
 import { NgModule } from '@angular/core';
@@ -10,7 +11,8 @@ const routes: Routes = [
   { path: 'products/ram', component: GridComponent },
   { path: 'products/motherboard', component: GridComponent },
   { path: 'user', component: UserComponent },
-  { path: 'login', component: AuthenticationComponent }
+  { path: 'login', component: AuthenticationComponent },
+  { path: 'registration', component: RegistrationComponent }
 ];
 
 @NgModule({
