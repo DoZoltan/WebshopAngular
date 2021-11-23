@@ -1,27 +1,26 @@
-# WebshopAngular
+# Project name: Webshop Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
+## Project description
+#### This is a SPA "Single Page Application" with Angular for the Webshop API.
+#### It contains the frontend View.
+#### You can find the backend part here: https://github.com/DoZoltan/WebshopAPI
 
-## Development server
+## Features and aims of the whole project (frontend + backend)
+#### In this web application the users can:
+- Register, modify and delete the own registration.
+- Find, filter and sort the products.
+- Add the products to your cart, and also delete from it.
+- Create / add new products, if you have permissions for it.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Used technologies
+- Angular
+- Bootstrap
+- Ag-Grid
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## How to launch while it is not deployed
+1. Download the Project
+2. Open it with an IDE (for example with VS Code)
+3. Open the terminal (View -> terminal)
+4. Write -> npm install -> press enter wait until done.
+5. Write -> ng serve -> open the website: ctrl + click on link what you will find in the terminal. 
+6. Open and start the backend API project (you can find the steps of it at its repo)
