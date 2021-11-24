@@ -26,7 +26,13 @@
         <li>
             <div class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16"></svg>
-                <input class="search-input" type=”text” placeholder="Search">
+                <input class="search-input" type="search" placeholder="Search" (keyup)="search($event)">
+                By
+                <label for="searchByName">Name</label>
+                <input type="radio" name="search-option" id="searchByName" value="Name" [checked]="true">
+                or
+                <label for="searchByBrand">Brand</label>
+                <input type="radio" name="search-option" id="searchByBrand" value="Brand">
             </div>
         </li>
     </ul>
