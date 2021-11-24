@@ -1,3 +1,4 @@
+import { SearchService } from './../../../services/utility/search.service';
 import { RamService } from './../../../services/product/ram.service';
 import { CpuService } from './../../../services/product/cpu.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -6,6 +7,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { DetailsComponent } from '../details/details.component';
 import { MotherboardService } from 'src/app/services/product/motherboard.service';
 import { IBaseProduct } from 'src/app/interfaces/products/ibase-product';
+import { LeftNavBarComponent } from '../../navigation/left-nav-bar/left-nav-bar.component';
 
 @Component({
   selector: 'app-grid',
@@ -15,6 +17,7 @@ import { IBaseProduct } from 'src/app/interfaces/products/ibase-product';
 export class GridComponent implements OnInit {
   @ViewChild('agGrid', { static: false }) agGrid: AgGridAngular;
   @ViewChild(DetailsComponent) details: DetailsComponent;
+  @ViewChild(LeftNavBarComponent) navbar: LeftNavBarComponent;
 
   currentRoute: string;
 
@@ -29,7 +32,8 @@ export class GridComponent implements OnInit {
   constructor(private route: Router, 
     private cpuService: CpuService, 
     private ramService: RamService, 
-    private motherboardService: MotherboardService) { }
+    private motherboardService: MotherboardService,
+    private searchService: SearchService) { }
 
   ngOnInit(): void
   {
@@ -78,4 +82,22 @@ export class GridComponent implements OnInit {
     }
   }
 
+  getSearchResult(inputText: string)
+  {
+    let isBrand = (document.querySelector('#searchByBrand') as HTMLInputElement).checked;
+    let isName = (document.querySelector('#searchByName') as HTMLInputElement).checked;
+
+    if (isBrand)
+    {
+      this.searchService.SearchByBrand(inputText).subscribe(result => this.products = result);
+    }
+    else if (isName)
+    {
+      this.searchService.SearchByProductName(inputText).subscribe(result => this.products = result);
+    }
+    else
+    {
+      console.log('Wrong search type - how did you do that?');
+    }
+  }
 }
