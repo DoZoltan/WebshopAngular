@@ -38,10 +38,19 @@
                 <input class="search-input" type="search" placeholder="Search" (keyup)="search($event)">
                 By
                 <label for="searchByName">Name</label>
-                <input type="radio" name="search-option" id="searchByName" value="Name" [checked]="true">
+                <input type="radio" 
+                        name="search-option" 
+                        id="searchByName" 
+                        value="Name" 
+                        [checked]="true"
+                        (click)="deleteInputContent()">
                 or
                 <label for="searchByBrand">Brand</label>
-                <input type="radio" name="search-option" id="searchByBrand" value="Brand">
+                <input type="radio" 
+                        name="search-option" 
+                        id="searchByBrand" 
+                        value="Brand"
+                        (click)="deleteInputContent()">
             </div>
         </li>
     </ul>
