@@ -5,11 +5,11 @@ import { IBaseProduct } from "./ibase-product";
 
 export interface IMotherboard extends IBaseProduct
 {
-    usb3Amount: Number,
-    wifi: Boolean,
-    sizeStandard: MotherboardSizeStandardEnum,
-    cpuSocketType: CpuSocketEnum,
-    memorySocketType: RamSocketEnum,
-    maxMemorySize: Number,
-    numberOfMemorySockets: Number,
+    usb3Amount: Number;
+    wifi: Boolean;
+    sizeStandard: MotherboardSizeStandardEnum;
+    cpuSocketType: CpuSocketEnum;
+    memorySocketType: RamSocketEnum;
+    maxMemorySize: Number;
+    numberOfMemorySockets: Number;
 }

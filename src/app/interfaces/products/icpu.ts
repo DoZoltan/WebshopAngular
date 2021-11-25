@@ -3,8 +3,8 @@ import { IBaseProduct } from "./ibase-product";
 
 export interface ICpu extends IBaseProduct
 {
-    coreNumber: Number,
-    l3Cache: Number,
-    speed: Number,
-    socketType: CpuSocketEnum,
+    coreNumber: Number;
+    l3Cache: Number;
+    speed: Number;
+    socketType: CpuSocketEnum;
 }
