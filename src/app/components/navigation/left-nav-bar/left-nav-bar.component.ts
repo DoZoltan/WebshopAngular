@@ -27,6 +27,7 @@ export class LeftNavBarComponent implements OnInit {
 
   setProductByType(type: string)
   {
+    (document.querySelector('.search-input') as HTMLInputElement).value = '';
     this.setProduct.emit(type);
   }
 }
