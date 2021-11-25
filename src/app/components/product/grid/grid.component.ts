@@ -71,8 +71,6 @@ export class GridComponent implements OnInit {
 
   getProductDetailsById(event: any) 
   {
-    console.log('ProductType', event.data.productType);
-
     switch (event.data.productType) {
       case ProductTypeEnum.Cpu:
         this.cpuService.getById(event.data.id).subscribe(product => this.details.setDetails(product));
