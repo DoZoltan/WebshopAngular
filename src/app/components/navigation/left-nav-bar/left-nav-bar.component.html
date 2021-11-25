@@ -9,7 +9,7 @@
             <a routerLink="/products/cpu" 
                 class="nav-link text-white" 
                 [ngClass]="isActive('/products/cpu') ? 'active' : ''"
-                (click)="setType('cpu')">
+                (click)="setProductByType('cpu')">
                 <svg class="bi me-2" width="16" height="16"></svg>
                 CPU
             </a>
@@ -18,7 +18,7 @@
             <a routerLink="/products/ram" 
                 class="nav-link text-white" 
                 [ngClass]="isActive('/products/ram') ? 'active' : ''"
-                (click)="setType('ram')">
+                (click)="setProductByType('ram')">
                 <svg class="bi me-2" width="16" height="16"></svg>
                 RAM
             </a>
@@ -27,7 +27,7 @@
             <a routerLink="/products/motherboard" 
                 class="nav-link text-white" 
                 [ngClass]="isActive('/products/motherboard') ? 'active' : ''"
-                (click)="setType('motherboard')">
+                (click)="setProductByType('motherboard')">
                 <svg class="bi me-2" width="16" height="16"></svg>
                 Motherboard
             </a>

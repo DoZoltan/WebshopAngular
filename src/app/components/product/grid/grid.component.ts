@@ -37,10 +37,10 @@ export class GridComponent implements OnInit {
 
   ngOnInit(): void
   {
-    this.setProductType('cpu');
+    this.setProductByType('cpu');
   }
 
-  setProductType(type: string)
+  setProductByType(type: string)
   {
     switch (type) {
       case 'cpu':

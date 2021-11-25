@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class LeftNavBarComponent implements OnInit {
   @Output() keyUpEvent = new EventEmitter<string>();
-  @Output() setProductType = new EventEmitter<string>();
+  @Output() setProduct = new EventEmitter<string>();
 
   constructor(private route: Router) { }
 
@@ -25,8 +25,8 @@ export class LeftNavBarComponent implements OnInit {
     this.keyUpEvent.emit(event.target.value);
   }
 
-  setType(type: string)
+  setProductByType(type: string)
   {
-    this.setProductType.emit(type);
+    this.setProduct.emit(type);
   }
 }
