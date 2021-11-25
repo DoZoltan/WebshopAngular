@@ -1,5 +1,5 @@
 <div class="product-container">
-    <app-left-nav-bar (keyUpEvent)="getSearchResult($event)"></app-left-nav-bar>
+    <app-left-nav-bar (keyUpEvent)="getSearchResult($event)" (setProductType)="setProductType($event)"></app-left-nav-bar>
     <div class="grid-container">
         <ag-grid-angular
             #agGrid 

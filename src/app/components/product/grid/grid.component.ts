@@ -37,16 +37,19 @@ export class GridComponent implements OnInit {
 
   ngOnInit(): void
   {
-    this.currentRoute = this.route.url
+    this.setProductType('cpu');
+  }
 
-    switch (this.currentRoute) {
-      case '/products/cpu':
+  setProductType(type: string)
+  {
+    switch (type) {
+      case 'cpu':
         this.getCpus();
         break;
-      case '/products/ram':
+      case 'ram':
         this.getRams();
         break;
-      case '/products/motherboard':
+      case 'motherboard':
         this.getMotherboards();
         break;
     }
@@ -89,10 +92,12 @@ export class GridComponent implements OnInit {
 
     if (isBrand)
     {
+      this.route.navigateByUrl(`products/search?brand=${inputText}`);
       this.searchService.SearchByBrand(inputText).subscribe(result => this.products = result);
     }
     else if (isName)
     {
+      this.route.navigateByUrl(`products/search?name=${inputText}`);
       this.searchService.SearchByProductName(inputText).subscribe(result => this.products = result);
     }
     else
