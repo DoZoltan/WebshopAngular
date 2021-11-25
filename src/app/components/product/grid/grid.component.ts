@@ -1,3 +1,4 @@
+import { ProductTypeEnum } from './../../../enums/product-type-enum';
 import { SearchService } from './../../../services/utility/search.service';
 import { RamService } from './../../../services/product/ram.service';
 import { CpuService } from './../../../services/product/cpu.service';
@@ -18,8 +19,6 @@ export class GridComponent implements OnInit {
   @ViewChild('agGrid', { static: false }) agGrid: AgGridAngular;
   @ViewChild(DetailsComponent) details: DetailsComponent;
   @ViewChild(LeftNavBarComponent) navbar: LeftNavBarComponent;
-
-  currentRoute: string;
 
   columnDefs = [
     { cellClass: 'grid-col', headerName: "Name", field: "productName", resizable: true, sortable: true, filter: true},
@@ -72,14 +71,16 @@ export class GridComponent implements OnInit {
 
   getProductDetailsById(event: any) 
   {
-    switch (this.currentRoute) {
-      case '/products/cpu':
+    console.log('ProductType', event.data.productType);
+
+    switch (event.data.productType) {
+      case ProductTypeEnum.Cpu:
         this.cpuService.getById(event.data.id).subscribe(product => this.details.setDetails(product));
         break;
-      case '/products/ram':
+      case ProductTypeEnum.Ram:
         this.ramService.getById(event.data.id).subscribe(product => this.details.setDetails(product));
         break;
-      case '/products/motherboard':
+      case ProductTypeEnum.Motherboard:
         this.motherboardService.getById(event.data.id).subscribe(product => this.details.setDetails(product));
         break;
     }
