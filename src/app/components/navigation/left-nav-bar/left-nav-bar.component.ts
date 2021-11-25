@@ -22,7 +22,10 @@ export class LeftNavBarComponent implements OnInit {
 
   search(event: any)
   {
-    this.keyUpEvent.emit(event.target.value);
+    if (this.isInputFieldNotEmpty(event.target.value))
+    {
+      this.keyUpEvent.emit(event.target.value);
+    }
   }
 
   setProductByType(type: string)
@@ -34,5 +37,10 @@ export class LeftNavBarComponent implements OnInit {
   deleteInputContent()
   {
     (document.querySelector('.search-input') as HTMLInputElement).value = '';
+  }
+
+  private isInputFieldNotEmpty(inputContent: string): boolean
+  {
+    return (inputContent.length > 0 && !inputContent.startsWith(" "));
   }
 }
