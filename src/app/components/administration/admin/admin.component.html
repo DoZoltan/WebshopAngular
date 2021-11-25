@@ -1,1 +1,18 @@
-<p>admin works!</p>
+<div class="admin-container">
+    <app-admin-nav-bar></app-admin-nav-bar>
+    <app-user *ngIf="route.url == '/admin/users'"></app-user>
+    <app-add-new *ngIf="route.url == '/admin/products/add'"></app-add-new>
+    <app-update *ngIf="route.url == '/admin/products/update'"></app-update>
+    <!-- <div class="grid-container">
+        <ag-grid-angular
+            #agGrid 
+            class= "ag-theme-balham ag-grid"
+            [rowData]="products"
+            [columnDefs]="columnDefs"
+            (rowClicked)="getProductDetailsById($event)">
+        </ag-grid-angular>
+    </div> -->
+    <!-- <div class="details-container">
+        <app-details></app-details>
+    </div> -->
+</div>
