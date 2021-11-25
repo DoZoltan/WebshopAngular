@@ -15,6 +15,7 @@ import { GridComponent } from './components/product/grid/grid.component';
 import { ComponentContainerComponent } from './components/component-container/component-container.component';
 import { DetailsComponent } from './components/product/details/details.component';
 import { UrlProvider } from './config/url-provider';
+import { AdminNavBarsComponent } from './components/navigation/admin-nav-bars/admin-nav-bars.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UrlProvider } from './config/url-provider';
     LeftNavBarComponent,
     GridComponent,
     ComponentContainerComponent,
-    DetailsComponent
+    DetailsComponent,
+    AdminNavBarsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, AgGridModule.withComponents([])],
   providers: [UrlProvider],
