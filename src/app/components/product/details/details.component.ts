@@ -24,17 +24,23 @@ export class DetailsComponent implements OnInit {
 
   setDetails(product: ICpu | IRam | IMotherboard)
   {
-    if ('coreNumber' in product) 
+    if ('coreNumber' in product)
     {
       this.isProductACpu = true;
+      this.isProductAMotherboard = false;
+      this.isProductARam = false;
     }
     else if ('numberOfMemorySockets' in product)
     {
+      this.isProductACpu = false;
       this.isProductAMotherboard = true;
+      this.isProductARam = false;
     }
     else if ('delay' in product)
     {
-      this.isProductARam = true;
+      this.isProductACpu = false;
+      this.isProductAMotherboard = false;
+      this.isProductARam = true
     }
     
     this.product = product;

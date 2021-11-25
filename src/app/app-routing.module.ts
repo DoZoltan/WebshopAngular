@@ -7,9 +7,7 @@ import { GridComponent } from './components/product/grid/grid.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/products/cpu', pathMatch: 'full' },
-  { path: 'products/cpu', component: GridComponent },
-  { path: 'products/ram', component: GridComponent },
-  { path: 'products/motherboard', component: GridComponent },
+  { path: 'products/:productType', component: GridComponent },
   { path: 'user', component: UserComponent },
   { path: 'login', component: AuthenticationComponent },
   { path: 'registration', component: RegistrationComponent }
