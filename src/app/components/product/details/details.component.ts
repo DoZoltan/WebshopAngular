@@ -22,6 +22,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void{
   }
 
+  // a product tartalmazza a type-ot, így az alapján eldönthető
   setDetails(product: ICpu | IRam | IMotherboard)
   {
     if ('coreNumber' in product)
