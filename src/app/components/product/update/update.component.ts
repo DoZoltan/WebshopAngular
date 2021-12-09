@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductTypeEnum } from 'src/app/enums/product-type-enum';
 import { IProductGridDataDTO } from 'src/app/interfaces/DTOs/iproduct-grid-data-dto';
-import { IBaseProduct } from 'src/app/interfaces/products/ibase-product';
 import { CpuService } from 'src/app/services/product/cpu.service';
 import { MotherboardService } from 'src/app/services/product/motherboard.service';
 import { RamService } from 'src/app/services/product/ram.service';
