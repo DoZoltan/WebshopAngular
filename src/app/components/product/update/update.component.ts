@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductTypeEnum } from 'src/app/enums/product-type-enum';
+import { IProductGridDataDTO } from 'src/app/interfaces/DTOs/iproduct-grid-data-dto';
 import { IBaseProduct } from 'src/app/interfaces/products/ibase-product';
 import { CpuService } from 'src/app/services/product/cpu.service';
 import { MotherboardService } from 'src/app/services/product/motherboard.service';
@@ -12,7 +13,7 @@ import { SearchService } from 'src/app/services/utility/search.service';
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent implements OnInit {
-  products: IBaseProduct[];
+  products: IProductGridDataDTO[];
   selectedProduct: any;
   
   columnDefs = [
@@ -31,7 +32,7 @@ export class UpdateComponent implements OnInit {
   {
     if (this.isInputFieldNotEmpty(event.target.value))
     {
-      this.searchService.SearchByProductName(event.target.value).subscribe(result => this.products = result);
+      this.searchService.searchByProductName(event.target.value).subscribe(result => this.products = result);
     }
   }
 
