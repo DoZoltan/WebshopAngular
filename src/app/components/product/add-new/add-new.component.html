@@ -35,100 +35,18 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Create new {{activeMenubarElement.cpu ? 'CPU' : activeMenubarElement.ram ? 'RAM' : 'Motherboard' }}</h4>
                 </div>
-                <!-- Base properties -->
                 <div class="row mt-3">
-                    <div class="col-md-12">
-                        <label class="labels">Product Name</label>
-                        <input type="text" class="form-control" placeholder="Product Name" value="">
-                    </div>
-                    <div class="col-md-12">
-                        <label class="labels">Brand</label>
-                        <input type="text" class="form-control" value="" placeholder="Brand">
-                    </div>
-                    <div class="col-md-12">
-                        <label class="labels">Image URL</label>
-                        <input type="text" class="form-control" placeholder="Image URL" value="">
-                    </div>
-                    <div class="col-md-12">
-                        <label class="labels">Acquisition Price</label>
-                        <input type="text" class="form-control" placeholder="Acquisition Price" value="">
-                    </div>
-                    <div class="col-md-12">
-                        <label class="labels">Sell Price</label>
-                        <input type="text" class="form-control" placeholder="Sell Price" value="">
-                    </div>
-                    <div class="col-md-12">
-                        <label class="labels">Product Type</label>
-                        <input type="text" class="form-control" placeholder="Product Type" value="">
-                    </div>
                     <!-- CPU -->
                     <div *ngIf="activeMenubarElement.cpu">
-                        <div class="col-md-12">
-                            <label class="labels">Number of Cores</label>
-                            <input type="text" class="form-control" placeholder="Number of Cores" value="">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">L3 Cache</label>
-                            <input type="text" class="form-control" placeholder="L3 Cache" value="">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Speed</label>
-                            <input type="text" class="form-control" placeholder="Speed" value="">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Socket Type</label>
-                            <input type="text" class="form-control" placeholder="Socket Type" value="">
-                        </div>
+                        <app-cpu-form></app-cpu-form>
                     </div>
                     <!-- RAM -->
                     <div *ngIf="activeMenubarElement.ram">
-                        <div class="col-md-12">
-                            <label class="labels">GB</label>
-                            <input type="text" class="form-control" placeholder="GB" value="">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Delay</label>
-                            <input type="text" class="form-control" placeholder="Delay" value="">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Speed</label>
-                            <input type="text" class="form-control" placeholder="Speed" value="">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Socket Type</label>
-                            <input type="text" class="form-control" placeholder="Socket Type" value="">
-                        </div>
+                        <app-ram-form></app-ram-form>
                     </div>
                     <!-- Motherboard -->
                     <div *ngIf="activeMenubarElement.motherboard">
-                        <div class="col-md-12">
-                            <label class="labels">Number of USB3 Ports</label>
-                            <input type="text" class="form-control" placeholder="Number of USB3 Ports" value="">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">WIFI</label>
-                            <input type="text" class="form-control" placeholder="WIFI" value="">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Size Standard</label>
-                            <input type="text" class="form-control" placeholder="Size Standard" value="">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">CPU Socket Type</label>
-                            <input type="text" class="form-control" placeholder="CPU Socket Type" value="">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Memory Socket Type</label>
-                            <input type="text" class="form-control" placeholder="Memory Socket Type" value="">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Max Memory Size</label>
-                            <input type="text" class="form-control" placeholder="Max Memory Size" value="">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Number of Memory Sockets</label>
-                            <input type="text" class="form-control" placeholder="Number of Memory Sockets" value="">
-                        </div>
+                        <app-motherboard-form></app-motherboard-form>
                     </div>
                 </div>
                 <div class="mt-5 text-center">
