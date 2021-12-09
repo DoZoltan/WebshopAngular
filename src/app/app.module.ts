@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AgGridModule } from 'ag-grid-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AdminComponent } from './components/administration/admin/admin.component';
@@ -18,6 +19,9 @@ import { UrlProvider } from './config/url-provider';
 import { AdminNavBarComponent } from './components/navigation/admin-nav-bar/admin-nav-bar.component';
 import { AddNewComponent } from './components/product/add-new/add-new.component';
 import { UpdateComponent } from './components/product/update/update.component';
+import { MotherboardFormComponent } from './components/product/productForms/motherboard-form/motherboard-form.component';
+import { RamFormComponent } from './components/product/productForms/ram-form/ram-form.component';
+import { CpuFormComponent } from './components/product/productForms/cpu-form/cpu-form.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +37,12 @@ import { UpdateComponent } from './components/product/update/update.component';
     DetailsComponent,
     AdminNavBarComponent,
     AddNewComponent,
-    UpdateComponent
+    UpdateComponent,
+    MotherboardFormComponent,
+    RamFormComponent,
+    CpuFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, AgGridModule.withComponents([])],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, AgGridModule.withComponents([]), FormsModule, ReactiveFormsModule],
   providers: [UrlProvider],
   bootstrap: [AppComponent],
 })
