@@ -31,15 +31,15 @@
                 <div class="row mt-3">
                     <!-- CPU -->
                     <div *ngIf="selectedProduct?.productType == 1">
-                        <app-cpu-form></app-cpu-form>
+                        <app-cpu-form [cpuToUpdate]="selectedProduct"></app-cpu-form>
                     </div>
                     <!-- RAM -->
                     <div *ngIf="selectedProduct?.productType == 2">
-                        <app-ram-form></app-ram-form>
+                        <app-ram-form [ramToUpdate]="selectedProduct"></app-ram-form>
                     </div>
                     <!-- Motherboard -->
                     <div *ngIf="selectedProduct?.productType == 3">
-                        <app-motherboard-form></app-motherboard-form>
+                        <app-motherboard-form [motherboardToUpdate]="selectedProduct"></app-motherboard-form>
                     </div>
                 </div>
                 <div class="mt-5 text-center">
