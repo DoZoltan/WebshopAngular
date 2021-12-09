@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UrlProvider } from 'src/app/config/url-provider';
-import { IBaseProduct } from 'src/app/interfaces/products/ibase-product';
+import { IProductGridDataDTO } from 'src/app/interfaces/DTOs/iproduct-grid-data-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +11,13 @@ export class SearchService {
 
   constructor(private http: HttpClient, private urlProvider: UrlProvider) { }
 
-  SearchByBrand(brandPart: string): Observable<IBaseProduct[]>
+  searchByBrand(brandPart: string): Observable<IProductGridDataDTO[]>
   {
-    return this.http.get<IBaseProduct[]>(`${this.urlProvider.SEARCH}/brand/${brandPart}`);
+    return this.http.get<IProductGridDataDTO[]>(`${this.urlProvider.SEARCH}/brand/${brandPart}`);
   }
 
-  SearchByProductName(namePart: string): Observable<IBaseProduct[]>
+  searchByProductName(namePart: string): Observable<IProductGridDataDTO[]>
   {
-    return this.http.get<IBaseProduct[]>(`${this.urlProvider.SEARCH}/name/${namePart}`);
+    return this.http.get<IProductGridDataDTO[]>(`${this.urlProvider.SEARCH}/name/${namePart}`);
   }
 }
