@@ -64,9 +64,20 @@ export class UpdateComponent implements OnInit {
 
   update()
   {
-    console.log('ram', this.ramFormComponent?.ramForm.valid);
-    console.log('cpu', this.cpuFormComponent?.cpuForm.valid);
-    console.log('moth', this.motherboardFormComponent?.motherboardForm.valid);
+    switch (this.selectedProduct.productType) {
+      case ProductTypeEnum.Cpu:
+        this.cpuService.update(this.selectedProduct.id, this.cpuFormComponent.cpuForm.value).subscribe(updated => console.log(updated));
+        break;
+      case ProductTypeEnum.Ram:
+        this.ramService.update(this.selectedProduct.id, this.ramFormComponent.ramForm.value).subscribe(updated => console.log(updated));
+        break;
+      case ProductTypeEnum.Motherboard:
+        this.motherboardService.update(this.selectedProduct.id, this.motherboardFormComponent.motherboardForm.value).subscribe(updated => console.log(updated));
+        break;
+      default:
+        console.log('The selected product\'s type is invalid');
+        break;
+    }
   }
 
   isUpdateButtonDisabled(): boolean
