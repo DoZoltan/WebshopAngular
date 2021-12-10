@@ -25,9 +25,10 @@ export abstract class BaseProductService<T>
     return this.http.post<T>(this.url, product, this.httpOptions);
   }
 
-  update(product: T): Observable<T>
+  update(id: number, product: T): Observable<T>
   {
-    return this.http.put<T>(this.url, product, this.httpOptions);
+    const fullUrl = `${this.url}/${id}`
+    return this.http.put<T>(fullUrl, product, this.httpOptions);
   }
 
   deleteById(id: Number)
