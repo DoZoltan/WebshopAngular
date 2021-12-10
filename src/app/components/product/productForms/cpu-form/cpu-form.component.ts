@@ -35,16 +35,17 @@ export class CpuFormComponent implements OnInit {
   {
     this.cpuForm = this.formBuilder.group(
       {
+        id: [this.cpuToUpdate?.id, [Validators.required]],
         productName: [this.cpuToUpdate?.productName, [Validators.required]],
         brand: [this.cpuToUpdate?.brand, [Validators.required]],
         imgURL: [this.cpuToUpdate?.imgURL],
         acquisitionPrice: [this.cpuToUpdate?.acquisitionPrice, [Validators.required]],
         sellPrice: [this.cpuToUpdate?.sellPrice, [Validators.required]],
-        productType: [this.cpuToUpdate ? this.getProductType(this.cpuToUpdate.productType) : '', [Validators.required]],
+        productType: [this.cpuToUpdate?.productType, [Validators.required]],
         coreNumber: [this.cpuToUpdate?.coreNumber, [Validators.required]],
         l3Cache: [this.cpuToUpdate?.l3Cache, [Validators.required]],
         speed: [this.cpuToUpdate?.speed, [Validators.required]],
-        socketType: [this.cpuToUpdate ? this.getCpuSocketType(this.cpuToUpdate.socketType) : '', [Validators.required]],
+        socketType: [this.cpuToUpdate?.socketType, [Validators.required]],
       }
     );   
   }
@@ -73,28 +74,28 @@ export class CpuFormComponent implements OnInit {
     return ProductTypeEnum[typeNumber];
   }
 
-  getCpuSocketTypeArray(): string[]
+  getCpuSocketTypeArray(): number[]
   {
-    let typeArray: string[] = [];
+    let typeArray: number[] = [];
 
     Object.keys(CpuSocketEnum).forEach(element => {
-      if (isNaN(Number(element))) 
+      if (!isNaN(Number(element))) 
       {
-        typeArray.push(element);
+        typeArray.push(Number(element));
       }
     });
 
     return typeArray!;
   }
 
-  getProductTypeArray(): string[]
+  getProductTypeArray(): number[]
   {
-    let typeArray: string[] = [];
+    let typeArray: number[] = [];
 
     Object.keys(ProductTypeEnum).forEach(element => {
-      if (isNaN(Number(element))) 
+      if (!isNaN(Number(element))) 
       {
-        typeArray.push(element);
+        typeArray.push(Number(element));
       }
     });
 

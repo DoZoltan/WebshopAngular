@@ -40,17 +40,18 @@ export class MotherboardFormComponent implements OnInit {
   {
     this.motherboardForm = this.formBuilder.group(
       {
+        id: [this.motherboardToUpdate?.id, [Validators.required]],
         productName: [this.motherboardToUpdate?.productName, [Validators.required]],
         brand: [this.motherboardToUpdate?.brand, [Validators.required]],
         imgURL: [this.motherboardToUpdate?.imgURL],
         acquisitionPrice: [this.motherboardToUpdate?.acquisitionPrice, [Validators.required]],
         sellPrice: [this.motherboardToUpdate?.sellPrice, [Validators.required]],
-        productType: [this.motherboardToUpdate ? this.getProductType(this.motherboardToUpdate.productType) : '', [Validators.required]],
+        productType: [this.motherboardToUpdate?.productType, [Validators.required]],
         usb3Amount: [this.motherboardToUpdate?.usb3Amount, [Validators.required]],
         wifi: [this.motherboardToUpdate?.wifi, [Validators.required]],
-        sizeStandard: [this.motherboardToUpdate ? this.getMotherboardSizeStandardType(this.motherboardToUpdate.sizeStandard) : '', [Validators.required]],
-        cpuSocketType: [this.motherboardToUpdate ? this.getCpuSocketType(this.motherboardToUpdate.cpuSocketType) : '', [Validators.required]],
-        memorySocketType: [this.motherboardToUpdate ? this.getRamSocketType(this.motherboardToUpdate.memorySocketType) : '', [Validators.required]],
+        sizeStandard: [this.motherboardToUpdate?.sizeStandard, [Validators.required]],
+        cpuSocketType: [this.motherboardToUpdate?.cpuSocketType, [Validators.required]],
+        memorySocketType: [this.motherboardToUpdate?.memorySocketType, [Validators.required]],
         maxMemorySize: [this.motherboardToUpdate?.maxMemorySize, [Validators.required]],
         numberOfMemorySockets: [this.motherboardToUpdate?.numberOfMemorySockets, [Validators.required]],
       }
@@ -105,56 +106,56 @@ export class MotherboardFormComponent implements OnInit {
     return ProductTypeEnum[typeNumber];
   }
 
-  getCpuSocketTypeArray(): string[]
+  getCpuSocketTypeArray(): number[]
   {
-    let typeArray: string[] = [];
+    let typeArray: number[] = [];
 
     Object.keys(CpuSocketEnum).forEach(element => {
-      if (isNaN(Number(element))) 
+      if (!isNaN(Number(element))) 
       {
-        typeArray.push(element);
+        typeArray.push(Number(element));
       }
     });
 
     return typeArray!;
   }
 
-  getProductTypeArray(): string[]
+  getProductTypeArray(): number[]
   {
-    let typeArray: string[] = [];
+    let typeArray: number[] = [];
 
     Object.keys(ProductTypeEnum).forEach(element => {
-      if (isNaN(Number(element))) 
+      if (!isNaN(Number(element))) 
       {
-        typeArray.push(element);
+        typeArray.push(Number(element));
       }
     });
 
     return typeArray!;
   }
 
-  getRamSocketTypeArray(): string[]
+  getRamSocketTypeArray(): number[]
   {
-    let typeArray: string[] = [];
+    let typeArray: number[] = [];
 
     Object.keys(RamSocketEnum).forEach(element => {
-      if (isNaN(Number(element))) 
+      if (!isNaN(Number(element))) 
       {
-        typeArray.push(element);
+        typeArray.push(Number(element));
       }
     });
 
     return typeArray!;
   }
 
-  getMotherboardSizeStandardArray(): string[]
+  getMotherboardSizeStandardArray(): number[]
   {
-    let sizeArray: string[] = [];
+    let sizeArray: number[] = [];
 
     Object.keys(MotherboardSizeStandardEnum).forEach(element => {
-      if (isNaN(Number(element))) 
+      if (!isNaN(Number(element))) 
       {
-        sizeArray.push(element);
+        sizeArray.push(Number(element));
       }
     });
 
