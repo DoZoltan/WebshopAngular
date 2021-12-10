@@ -37,16 +37,17 @@ export class RamFormComponent implements OnInit {
   {
     this.ramForm = this.formBuilder.group(
       {
+        id: [this.ramToUpdate?.id, [Validators.required]],
         productName: [this.ramToUpdate?.productName, [Validators.required]],
         brand: [this.ramToUpdate?.brand, [Validators.required]],
         imgURL: [this.ramToUpdate?.imgURL],
         acquisitionPrice: [this.ramToUpdate?.acquisitionPrice, [Validators.required]],
         sellPrice: [this.ramToUpdate?.sellPrice, [Validators.required]],
-        productType: [this.ramToUpdate ? this.getProductType(this.ramToUpdate.productType) : '', [Validators.required]],
+        productType: [this.ramToUpdate?.productType, [Validators.required]],
         gb: [this.ramToUpdate?.gb, [Validators.required]],
         delay: [this.ramToUpdate?.delay, [Validators.required]],
         speed: [this.ramToUpdate?.speed, [Validators.required]],
-        socketType: [this.ramToUpdate ? this.getRamSocketType(this.ramToUpdate.socketType) : '', [Validators.required]],
+        socketType: [this.ramToUpdate?.socketType, [Validators.required]],
       }
     );
   }
@@ -75,28 +76,28 @@ export class RamFormComponent implements OnInit {
     return ProductTypeEnum[typeNumber];
   }
 
-  getRamSocketTypeArray(): string[]
+  getRamSocketTypeArray(): number[]
   {
-    let typeArray: string[] = [];
+    let typeArray: number[] = [];
 
     Object.keys(RamSocketEnum).forEach(element => {
-      if (isNaN(Number(element))) 
+      if (!isNaN(Number(element))) 
       {
-        typeArray.push(element);
+        typeArray.push(Number(element));
       }
     });
 
     return typeArray!;
   }
 
-  getProductTypeArray(): string[]
+  getProductTypeArray(): number[]
   {
-    let typeArray: string[] = [];
+    let typeArray: number[] = [];
 
     Object.keys(ProductTypeEnum).forEach(element => {
-      if (isNaN(Number(element))) 
+      if (!isNaN(Number(element))) 
       {
-        typeArray.push(element);
+        typeArray.push(Number(element));
       }
     });
 
