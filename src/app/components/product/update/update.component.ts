@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Injectable } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductTypeEnum } from 'src/app/enums/product-type-enum';
 import { IProductGridDataDTO } from 'src/app/interfaces/DTOs/iproduct-grid-data-dto';
 import { CpuService } from 'src/app/services/product/cpu.service';
