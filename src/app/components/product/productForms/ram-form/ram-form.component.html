@@ -22,7 +22,9 @@
         </div>
         <div class="col-md-12">
             <label class="labels" for="productType">Product Type</label>
-            <input type="text" class="form-control" id="productType" formControlName="productType">
+            <select class="custom-select" (change)="changeProductType($event)" class="form-control" id="productType" formControlName="productType">
+                <option *ngFor="let prodType of getProductTypeArray()" [ngValue]="prodType">{{prodType}}</option>
+            </select>
         </div>
         <div class="col-md-12">
             <label class="labels" for="gb">GB</label>
@@ -38,7 +40,9 @@
         </div>
         <div class="col-md-12">
             <label class="labels" for="socketType">Socket Type</label>
-            <input type="text" class="form-control" id="socketType" formControlName="socketType">
+            <select class="custom-select" (change)="changeSocketType($event)" class="form-control" id="socketType" formControlName="socketType">
+                <option *ngFor="let ramType of getRamSocketTypeArray()" [ngValue]="ramType">{{ramType}}</option>
+            </select>
         </div>
     </div>
 </form>

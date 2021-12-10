@@ -22,7 +22,9 @@
         </div>
         <div class="col-md-12">
             <label class="labels" for="productType">Product Type</label>
-            <input type="text" class="form-control" id="productType" formControlName="productType">
+            <select class="custom-select" (change)="changeProductType($event)" class="form-control" id="productType" formControlName="productType">
+                <option *ngFor="let prodType of getProductTypeArray()" [ngValue]="prodType">{{prodType}}</option>
+            </select>
         </div>
         <div class="col-md-12">
             <label class="labels" for="usb3Amount">Number of USB3 Ports</label>
@@ -34,15 +36,21 @@
         </div>
         <div class="col-md-12">
             <label class="labels" for="sizeStandard">Size Standard</label>
-            <input type="text" class="form-control" id="sizeStandard" formControlName="sizeStandard">
+            <select class="custom-select" (change)="changeSizeStandard($event)" class="form-control" id="sizeStandard" formControlName="sizeStandard">
+                <option *ngFor="let sizeStandard of getMotherboardSizeStandardArray()" [ngValue]="sizeStandard">{{sizeStandard}}</option>
+            </select>
         </div>
         <div class="col-md-12">
             <label class="labels" for="cpuSocketType">CPU Socket Type</label>
-            <input type="text" class="form-control" id="cpuSocketType" formControlName="cpuSocketType">
+            <select class="custom-select" (change)="changeCpuSocketType($event)" class="form-control" id="cpuSocketType" formControlName="cpuSocketType">
+                <option *ngFor="let cpuType of getCpuSocketTypeArray()" [ngValue]="cpuType">{{cpuType}}</option>
+            </select>
         </div>
         <div class="col-md-12">
             <label class="labels" for="memorySocketType">Memory Socket Type</label>
-            <input type="text" class="form-control" id="memorySocketType" formControlName="memorySocketType">
+            <select class="custom-select" (change)="changeRamSocketType($event)" class="form-control" id="memorySocketType" formControlName="memorySocketType">
+                <option *ngFor="let ramType of getRamSocketTypeArray()" [ngValue]="ramType">{{ramType}}</option>
+            </select>
         </div>
         <div class="col-md-12">
             <label class="labels" for="maxMemorySize">Max Memory Size</label>

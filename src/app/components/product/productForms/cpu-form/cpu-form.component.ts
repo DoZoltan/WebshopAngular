@@ -49,6 +49,20 @@ export class CpuFormComponent implements OnInit {
     );   
   }
 
+  changeSocketType(event: any) 
+  {
+    this.cpuForm.controls['socketType'].setValue(event.target.value, {
+      onlySelf: true
+    })
+  }
+
+  changeProductType(event: any) 
+  {
+    this.cpuForm.controls['productType'].setValue(event.target.value, {
+      onlySelf: true
+    })
+  }
+
   getCpuSocketType(typeNumber: number): string
   {
     return CpuSocketEnum[typeNumber];
@@ -57,5 +71,33 @@ export class CpuFormComponent implements OnInit {
   getProductType(typeNumber: number): string 
   {
     return ProductTypeEnum[typeNumber];
+  }
+
+  getCpuSocketTypeArray(): string[]
+  {
+    let typeArray: string[] = [];
+
+    Object.keys(CpuSocketEnum).forEach(element => {
+      if (isNaN(Number(element))) 
+      {
+        typeArray.push(element);
+      }
+    });
+
+    return typeArray!;
+  }
+
+  getProductTypeArray(): string[]
+  {
+    let typeArray: string[] = [];
+
+    Object.keys(ProductTypeEnum).forEach(element => {
+      if (isNaN(Number(element))) 
+      {
+        typeArray.push(element);
+      }
+    });
+
+    return typeArray!;
   }
 }

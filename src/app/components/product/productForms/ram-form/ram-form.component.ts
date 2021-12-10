@@ -51,6 +51,20 @@ export class RamFormComponent implements OnInit {
     );
   }
 
+  changeSocketType(event: any) 
+  {
+    this.ramForm.controls['socketType'].setValue(event.target.value, {
+      onlySelf: true
+    })
+  }
+
+  changeProductType(event: any) 
+  {
+    this.ramForm.controls['productType'].setValue(event.target.value, {
+      onlySelf: true
+    })
+  }
+
   getRamSocketType(typeNumber: number): string
   {
     return RamSocketEnum[typeNumber];
@@ -59,5 +73,33 @@ export class RamFormComponent implements OnInit {
   getProductType(typeNumber: number): string 
   {
     return ProductTypeEnum[typeNumber];
+  }
+
+  getRamSocketTypeArray(): string[]
+  {
+    let typeArray: string[] = [];
+
+    Object.keys(RamSocketEnum).forEach(element => {
+      if (isNaN(Number(element))) 
+      {
+        typeArray.push(element);
+      }
+    });
+
+    return typeArray!;
+  }
+
+  getProductTypeArray(): string[]
+  {
+    let typeArray: string[] = [];
+
+    Object.keys(ProductTypeEnum).forEach(element => {
+      if (isNaN(Number(element))) 
+      {
+        typeArray.push(element);
+      }
+    });
+
+    return typeArray!;
   }
 }

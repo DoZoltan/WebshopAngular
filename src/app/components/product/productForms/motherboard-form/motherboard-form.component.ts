@@ -57,6 +57,34 @@ export class MotherboardFormComponent implements OnInit {
     );
   }
 
+  changeCpuSocketType(event: any) 
+  {
+    this.motherboardForm.controls['cpuSocketType'].setValue(event.target.value, {
+      onlySelf: true
+    })
+  }
+
+  changeProductType(event: any) 
+  {
+    this.motherboardForm.controls['productType'].setValue(event.target.value, {
+      onlySelf: true
+    })
+  }
+
+  changeRamSocketType(event: any) 
+  {
+    this.motherboardForm.controls['memorySocketType'].setValue(event.target.value, {
+      onlySelf: true
+    })
+  }
+
+  changeSizeStandard(event: any) 
+  {
+    this.motherboardForm.controls['sizeStandard'].setValue(event.target.value, {
+      onlySelf: true
+    })
+  }
+
   getRamSocketType(typeNumber: number): string
   {
     return RamSocketEnum[typeNumber];
@@ -75,5 +103,61 @@ export class MotherboardFormComponent implements OnInit {
   getProductType(typeNumber: number): string 
   {
     return ProductTypeEnum[typeNumber];
+  }
+
+  getCpuSocketTypeArray(): string[]
+  {
+    let typeArray: string[] = [];
+
+    Object.keys(CpuSocketEnum).forEach(element => {
+      if (isNaN(Number(element))) 
+      {
+        typeArray.push(element);
+      }
+    });
+
+    return typeArray!;
+  }
+
+  getProductTypeArray(): string[]
+  {
+    let typeArray: string[] = [];
+
+    Object.keys(ProductTypeEnum).forEach(element => {
+      if (isNaN(Number(element))) 
+      {
+        typeArray.push(element);
+      }
+    });
+
+    return typeArray!;
+  }
+
+  getRamSocketTypeArray(): string[]
+  {
+    let typeArray: string[] = [];
+
+    Object.keys(RamSocketEnum).forEach(element => {
+      if (isNaN(Number(element))) 
+      {
+        typeArray.push(element);
+      }
+    });
+
+    return typeArray!;
+  }
+
+  getMotherboardSizeStandardArray(): string[]
+  {
+    let sizeArray: string[] = [];
+
+    Object.keys(MotherboardSizeStandardEnum).forEach(element => {
+      if (isNaN(Number(element))) 
+      {
+        sizeArray.push(element);
+      }
+    });
+
+    return sizeArray!;
   }
 }

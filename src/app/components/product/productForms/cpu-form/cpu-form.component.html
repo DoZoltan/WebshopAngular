@@ -22,7 +22,9 @@
         </div>
         <div class="col-md-12">
             <label class="labels" for="productType">Product Type</label>
-            <input type="text" class="form-control" id="productType" formControlName="productType">
+            <select class="custom-select" (change)="changeProductType($event)" class="form-control" id="productType" formControlName="productType">
+                <option *ngFor="let city of getProductTypeArray()" [ngValue]="city">{{city}}</option>
+            </select>
         </div>
         <div class="col-md-12">
             <label class="labels" for="coreNumber">Number of Cores</label>
@@ -38,7 +40,9 @@
         </div>
         <div class="col-md-12">
             <label class="labels" for="socketType">Socket Type</label>
-            <input type="text" class="form-control" id="socketType" formControlName="socketType">
-        </div>
+            <select class="custom-select" (change)="changeSocketType($event)" class="form-control" id="socketType" formControlName="socketType">
+                <option *ngFor="let city of getCpuSocketTypeArray()" [ngValue]="city">{{city}}</option>
+            </select>
+        </div>   
     </div>   
 </form>
