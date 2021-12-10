@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProductTypeEnum } from 'src/app/enums/product-type-enum';
+import { RamSocketEnum } from 'src/app/enums/ram-socket-enum';
 
 @Component({
   selector: 'app-ram-form',
@@ -40,12 +42,22 @@ export class RamFormComponent implements OnInit {
         imgURL: [this.ramToUpdate?.imgURL],
         acquisitionPrice: [this.ramToUpdate?.acquisitionPrice, [Validators.required]],
         sellPrice: [this.ramToUpdate?.sellPrice, [Validators.required]],
-        productType: [this.ramToUpdate?.productType, [Validators.required]],
+        productType: [this.ramToUpdate ? this.getProductType(this.ramToUpdate.productType) : '', [Validators.required]],
         gb: [this.ramToUpdate?.gb, [Validators.required]],
         delay: [this.ramToUpdate?.delay, [Validators.required]],
         speed: [this.ramToUpdate?.speed, [Validators.required]],
-        socketType: [this.ramToUpdate?.socketType, [Validators.required]],
+        socketType: [this.ramToUpdate ? this.getRamSocketType(this.ramToUpdate.socketType) : '', [Validators.required]],
       }
     );
+  }
+
+  getRamSocketType(typeNumber: number): string
+  {
+    return RamSocketEnum[typeNumber];
+  }
+
+  getProductType(typeNumber: number): string 
+  {
+    return ProductTypeEnum[typeNumber];
   }
 }
