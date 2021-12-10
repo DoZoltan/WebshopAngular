@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Injectable } from '@angular/core';
 import { ProductTypeEnum } from 'src/app/enums/product-type-enum';
 import { IProductGridDataDTO } from 'src/app/interfaces/DTOs/iproduct-grid-data-dto';
 import { CpuService } from 'src/app/services/product/cpu.service';
 import { MotherboardService } from 'src/app/services/product/motherboard.service';
 import { RamService } from 'src/app/services/product/ram.service';
 import { SearchService } from 'src/app/services/utility/search.service';
+import { CpuFormComponent } from '../productForms/cpu-form/cpu-form.component';
+import { MotherboardFormComponent } from '../productForms/motherboard-form/motherboard-form.component';
+import { RamFormComponent } from '../productForms/ram-form/ram-form.component';
 
 @Component({
   selector: 'app-update',
@@ -12,6 +15,10 @@ import { SearchService } from 'src/app/services/utility/search.service';
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent implements OnInit {
+  @ViewChild(RamFormComponent) ramFormComponent: RamFormComponent;
+  @ViewChild(MotherboardFormComponent) motherboardFormComponent: MotherboardFormComponent;
+  @ViewChild(CpuFormComponent) cpuFormComponent: CpuFormComponent;
+  
   products: IProductGridDataDTO[];
   selectedProduct: any;
   
@@ -52,6 +59,33 @@ export class UpdateComponent implements OnInit {
       case ProductTypeEnum.Motherboard:
         this.motherboardService.getById(event.data.id).subscribe(product => this.selectedProduct = product);
         break;
+    }
+  }
+
+  update()
+  {
+    console.log('ram', this.ramFormComponent?.ramForm.valid);
+    console.log('cpu', this.cpuFormComponent?.cpuForm.valid);
+    console.log('moth', this.motherboardFormComponent?.motherboardForm.valid);
+  }
+
+  isUpdateButtonDisabled(): boolean
+  {
+    if (this.ramFormComponent) 
+    {
+      return this.ramFormComponent.ramForm.invalid;
+    }
+    else if (this.cpuFormComponent)
+    {
+      return this.cpuFormComponent.cpuForm.invalid;
+    }
+    else if (this.motherboardFormComponent)
+    {
+      return this.motherboardFormComponent.motherboardForm.invalid;
+    }
+    else
+    {
+      return false;
     }
   }
 }

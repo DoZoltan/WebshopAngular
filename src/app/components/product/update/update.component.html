@@ -25,9 +25,6 @@
         </div>
         <div class="col border-right">
             <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Product name</h4>
-                </div>
                 <div class="row mt-3">
                     <!-- CPU -->
                     <div *ngIf="selectedProduct?.productType == 1">
@@ -42,8 +39,8 @@
                         <app-motherboard-form [motherboardToUpdate]="selectedProduct"></app-motherboard-form>
                     </div>
                 </div>
-                <div class="mt-5 text-center">
-                    <button class="btn btn-primary profile-button" type="button">Update</button>
+                <div *ngIf="selectedProduct" class="mt-5 text-center">
+                    <button class="btn btn-primary profile-button" type="button" [disabled]="isUpdateButtonDisabled()" (click)="update()">Update</button>
                 </div>
             </div>
         </div>
