@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CpuFormComponent } from '../productForms/cpu-form/cpu-form.component';
+import { MotherboardFormComponent } from '../productForms/motherboard-form/motherboard-form.component';
+import { RamFormComponent } from '../productForms/ram-form/ram-form.component';
 
 @Component({
   selector: 'app-add-new',
@@ -6,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-new.component.scss']
 })
 export class AddNewComponent implements OnInit {
+  @ViewChild(RamFormComponent) ramFormComponent: RamFormComponent;
+  @ViewChild(MotherboardFormComponent) motherboardFormComponent: MotherboardFormComponent;
+  @ViewChild(CpuFormComponent) cpuFormComponent: CpuFormComponent;
+  
   activeMenubarElement = {
     cpu: true,
     ram: false,
@@ -53,6 +60,33 @@ export class AddNewComponent implements OnInit {
         this.activeMenubarElement.cpu = false;
         this.activeMenubarElement.ram = false;
         this.activeMenubarElement.motherboard = false;
+    }
+  }
+
+  create()
+  {
+    console.log('ram', this.ramFormComponent?.ramForm.valid);
+    console.log('cpu', this.cpuFormComponent?.cpuForm.valid);
+    console.log('moth', this.motherboardFormComponent?.motherboardForm.valid);
+  }
+
+  isUpdateButtonDisabled(): boolean
+  {
+    if (this.ramFormComponent) 
+    {
+      return this.ramFormComponent.ramForm.invalid;
+    }
+    else if (this.cpuFormComponent)
+    {
+      return this.cpuFormComponent.cpuForm.invalid;
+    }
+    else if (this.motherboardFormComponent)
+    {
+      return this.motherboardFormComponent.motherboardForm.invalid;
+    }
+    else
+    {
+      return true;
     }
   }
 }

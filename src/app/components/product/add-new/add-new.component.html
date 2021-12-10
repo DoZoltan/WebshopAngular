@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="mt-5 text-center">
-                    <button class="btn btn-primary profile-button" type="button">Add {{activeMenubarElement.cpu ? 'CPU' : activeMenubarElement.ram ? 'RAM' : 'Motherboard' }}</button>
+                    <button class="btn btn-primary profile-button" type="button" [disabled]="isUpdateButtonDisabled()" (click)="create()">Add {{activeMenubarElement.cpu ? 'CPU' : activeMenubarElement.ram ? 'RAM' : 'Motherboard' }}</button>
                 </div>
             </div>
         </div>
