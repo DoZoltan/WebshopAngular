@@ -18,7 +18,7 @@ export class CpuFormComponent implements OnInit {
       imgURL: [''],
       acquisitionPrice: ['', [Validators.required]],
       sellPrice: ['', [Validators.required]],
-      productType: ['', [Validators.required]],
+      productType: [ProductTypeEnum.Cpu, [Validators.required]],
       coreNumber: ['', [Validators.required]],
       l3Cache: ['', [Validators.required]],
       speed: ['', [Validators.required]],

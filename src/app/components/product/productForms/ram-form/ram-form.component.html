@@ -23,7 +23,7 @@
         <div class="col-md-12">
             <label class="labels" for="productType">Product Type</label>
             <select class="custom-select" (change)="changeProductType($event)" class="form-control" id="productType" formControlName="productType">
-                <option *ngFor="let prodType of getProductTypeArray()" [ngValue]="prodType">{{getProductType(prodType)}}</option>
+                <option *ngFor="let prodType of getProductTypeArray()" [ngValue]="prodType" disabled>{{getProductType(prodType)}}</option>
             </select>
         </div>
         <div class="col-md-12">

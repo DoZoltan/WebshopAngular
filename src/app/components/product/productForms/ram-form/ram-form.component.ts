@@ -18,7 +18,7 @@ export class RamFormComponent implements OnInit {
       imgURL: [''],
       acquisitionPrice: ['', [Validators.required]],
       sellPrice: ['', [Validators.required]],
-      productType: ['', [Validators.required]],
+      productType: [ProductTypeEnum.Ram, [Validators.required]],
       gb: ['', [Validators.required]],
       delay: ['', [Validators.required]],
       speed: ['', [Validators.required]],

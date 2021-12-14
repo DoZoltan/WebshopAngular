@@ -20,7 +20,7 @@ export class MotherboardFormComponent implements OnInit {
       imgURL: [''],
       acquisitionPrice: ['', [Validators.required]],
       sellPrice: ['', [Validators.required]],
-      productType: ['', [Validators.required]],
+      productType: [ProductTypeEnum.Motherboard, [Validators.required]],
       usb3Amount: ['', [Validators.required]],
       wifi: ['', [Validators.required]],
       sizeStandard: ['', [Validators.required]],
