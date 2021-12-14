@@ -83,6 +83,33 @@ export class UpdateComponent implements OnInit {
     }
   }
 
+  delete()
+  {
+    if (confirm("Are you sure you want to delete?") == true) 
+    {
+      switch (this.selectedProduct.productType) {
+        case ProductTypeEnum.Cpu:
+          this.cpuService.deleteById(this.selectedProduct.id).subscribe((data) => {},
+          (error) => {this.showUpdateResult("Delete has failed")}, 
+          () => { this.showUpdateResult("Successful delete"); this.refreshGridDataAfterSuccessfulUpdate(); this.selectedProduct = null; });
+          break;
+        case ProductTypeEnum.Ram:
+          this.ramService.deleteById(this.selectedProduct.id).subscribe((data) => {},
+          (error) => {this.showUpdateResult("Delete has failed")}, 
+          () => { this.showUpdateResult("Successful delete"); this.refreshGridDataAfterSuccessfulUpdate(); this.selectedProduct = null; });
+          break;
+        case ProductTypeEnum.Motherboard:
+          this.motherboardService.deleteById(this.selectedProduct.id).subscribe((data) => {},
+          (error) => {this.showUpdateResult("Delete has failed")}, 
+          () => { this.showUpdateResult("Successful delete"); this.refreshGridDataAfterSuccessfulUpdate(); this.selectedProduct = null; });
+          break;
+        default:
+          console.log('The selected product\'s type is invalid');
+          break;
+      }
+    }
+  }
+
   isUpdateButtonDisabled(): boolean
   {
     if (this.ramFormComponent) 
