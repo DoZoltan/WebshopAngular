@@ -39,8 +39,13 @@
                         <app-motherboard-form [motherboardToUpdate]="selectedProduct"></app-motherboard-form>
                     </div>
                 </div>
-                <div *ngIf="selectedProduct" class="mt-5 text-center">
-                    <button class="btn btn-primary profile-button" type="button" [disabled]="isUpdateButtonDisabled()" (click)="update()">Update</button>
+                <div class="inlineButtonContainer">   
+                    <div *ngIf="selectedProduct" class="mt-5 text-center inlineButton">
+                        <button class="btn btn-primary profile-button" type="button" [disabled]="isUpdateButtonDisabled()" (click)="update()">Update</button>
+                    </div>
+                    <div *ngIf="selectedProduct" class="mt-5 text-center inlineButton">
+                        <button class="btn btn-danger profile-button" type="button" (click)="update()">Delete</button>
+                    </div>
                 </div>
             </div>
         </div>
