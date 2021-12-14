@@ -1,0 +1,16 @@
+.admin-container{
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    background-color: lightgrey;
+
+    .admin-content-container{
+        width: 100%;
+        margin: 20px;
+        border: solid 1px;
+        border-color: var(--ag-border-color, #bdc3c7);
+        background-color:lavender;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+}

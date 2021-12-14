@@ -1,0 +1,64 @@
+<form [formGroup]="motherboardForm">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <label class="labels" for="productName">Product Name</label>
+            <input type="text" class="form-control" id="productName" formControlName="productName">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="brand">Brand</label>
+            <input type="text" class="form-control" id="brand" formControlName="brand">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="imgURL">Image URL</label>
+            <input type="text" class="form-control" id="imgURL" formControlName="imgURL">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="acquisitionPrice">Acquisition Price</label>
+            <input type="text" class="form-control" id="acquisitionPrice" formControlName="acquisitionPrice">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="sellPrice">Sell Price</label>
+            <input type="text" class="form-control" id="sellPrice" formControlName="sellPrice">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="productType">Product Type</label>
+            <select class="custom-select" (change)="changeProductType($event)" class="form-control" id="productType" formControlName="productType">
+                <option *ngFor="let prodType of getProductTypeArray()" [ngValue]="prodType" disabled>{{getProductType(prodType)}}</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="usb3Amount">Number of USB3 Ports</label>
+            <input type="text" class="form-control" id="usb3Amount" formControlName="usb3Amount">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="wifi">WIFI</label>
+            <input type="text" class="form-control" id="wifi" formControlName="wifi">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="sizeStandard">Size Standard</label>
+            <select class="custom-select" (change)="changeSizeStandard($event)" class="form-control" id="sizeStandard" formControlName="sizeStandard">
+                <option *ngFor="let sizeStandard of getMotherboardSizeStandardArray()" [ngValue]="sizeStandard">{{getMotherboardSizeStandardType(sizeStandard)}}</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="cpuSocketType">CPU Socket Type</label>
+            <select class="custom-select" (change)="changeCpuSocketType($event)" class="form-control" id="cpuSocketType" formControlName="cpuSocketType">
+                <option *ngFor="let cpuType of getCpuSocketTypeArray()" [ngValue]="cpuType">{{getCpuSocketType(cpuType)}}</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="memorySocketType">Memory Socket Type</label>
+            <select class="custom-select" (change)="changeRamSocketType($event)" class="form-control" id="memorySocketType" formControlName="memorySocketType">
+                <option *ngFor="let ramType of getRamSocketTypeArray()" [ngValue]="ramType">{{getRamSocketType(ramType)}}</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="maxMemorySize">Max Memory Size</label>
+            <input type="text" class="form-control" id="maxMemorySize" formControlName="maxMemorySize">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="numberOfMemorySockets">Number of Memory Sockets</label>
+            <input type="text" class="form-control" id="numberOfMemorySockets" formControlName="numberOfMemorySockets">
+        </div>
+    </div>
+</form>

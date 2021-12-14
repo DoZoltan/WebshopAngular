@@ -5,6 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CpuSocketEnum } from 'src/app/enums/cpu-socket-enum';
 import { RamSocketEnum } from 'src/app/enums/ram-socket-enum';
 import { MotherboardSizeStandardEnum } from 'src/app/enums/motherboard-size-standard-enum';
+import { ProductTypeEnum } from 'src/app/enums/product-type-enum';
 
 @Component({
   selector: 'app-details',
@@ -24,19 +25,19 @@ export class DetailsComponent implements OnInit {
 
   setDetails(product: ICpu | IRam | IMotherboard)
   {
-    if ('coreNumber' in product)
+    if (product.productType == ProductTypeEnum.Cpu)
     {
       this.isProductACpu = true;
       this.isProductAMotherboard = false;
       this.isProductARam = false;
     }
-    else if ('numberOfMemorySockets' in product)
+    else if (product.productType == ProductTypeEnum.Motherboard)
     {
       this.isProductACpu = false;
       this.isProductAMotherboard = true;
       this.isProductARam = false;
     }
-    else if ('delay' in product)
+    else if (product.productType == ProductTypeEnum.Ram)
     {
       this.isProductACpu = false;
       this.isProductAMotherboard = false;

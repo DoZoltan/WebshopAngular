@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 import { AgGridAngular } from 'ag-grid-angular';
 import { DetailsComponent } from '../details/details.component';
 import { MotherboardService } from 'src/app/services/product/motherboard.service';
-import { IBaseProduct } from 'src/app/interfaces/products/ibase-product';
 import { LeftNavBarComponent } from '../../navigation/left-nav-bar/left-nav-bar.component';
+import { IProductGridDataDTO } from 'src/app/interfaces/DTOs/iproduct-grid-data-dto';
 
 @Component({
   selector: 'app-grid',
@@ -26,7 +26,7 @@ export class GridComponent implements OnInit {
     { cellClass: 'grid-col', headerName: "Price", field: "sellPrice", resizable: true, sortable: true, filter: true}
   ];
 
-  products: IBaseProduct[];
+  products: IProductGridDataDTO[];
 
   constructor(private route: Router, 
     private cpuService: CpuService, 
@@ -56,17 +56,17 @@ export class GridComponent implements OnInit {
 
   getCpus()
   {
-    this.cpuService.getAll().subscribe(cpu => this.products = cpu);
+    this.cpuService.getCpusForGridData().subscribe(cpu => this.products = cpu);
   }
 
   getRams()
   {
-    this.ramService.getAll().subscribe(ram => this.products = ram);
+    this.ramService.getRamsForGridData().subscribe(ram => this.products = ram);
   }
 
   getMotherboards()
   { 
-    this.motherboardService.getAll().subscribe(motherboard => this.products = motherboard);
+    this.motherboardService.getMotherboardsForGridData().subscribe(motherboard => this.products = motherboard);
   }
 
   getProductDetailsById(event: any) 
@@ -92,12 +92,12 @@ export class GridComponent implements OnInit {
     if (isBrand)
     {
       this.route.navigateByUrl(`products/search?brand=${inputText}`);
-      this.searchService.SearchByBrand(inputText).subscribe(result => this.products = result);
+      this.searchService.searchByBrand(inputText).subscribe(result => this.products = result);
     }
     else if (isName)
     {
       this.route.navigateByUrl(`products/search?name=${inputText}`);
-      this.searchService.SearchByProductName(inputText).subscribe(result => this.products = result);
+      this.searchService.searchByProductName(inputText).subscribe(result => this.products = result);
     }
     else
     {

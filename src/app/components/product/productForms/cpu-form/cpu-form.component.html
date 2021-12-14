@@ -1,0 +1,48 @@
+<form [formGroup]="cpuForm">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <label class="labels" for="productName">Product Name</label>
+            <input type="text" class="form-control" id="productName" formControlName="productName">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="brand">Brand</label>
+            <input type="text" class="form-control" id="brand" formControlName="brand">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="imgURL">Image URL</label>
+            <input type="text" class="form-control" id="imgURL" formControlName="imgURL">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="acquisitionPrice">Acquisition Price</label>
+            <input type="text" class="form-control" id="acquisitionPrice" formControlName="acquisitionPrice">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="sellPrice">Sell Price</label>
+            <input type="text" class="form-control" id="sellPrice" formControlName="sellPrice">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="productType">Product Type</label>
+            <select class="custom-select" (change)="changeProductType($event)" class="form-control" id="productType" formControlName="productType">
+                <option *ngFor="let prodType of getProductTypeArray()" [ngValue]="prodType" disabled>{{getProductType(prodType)}}</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="coreNumber">Number of Cores</label>
+            <input type="text" class="form-control" pid="coreNumber" formControlName="coreNumber">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="l3Cache">L3 Cache</label>
+            <input type="text" class="form-control" id="l3Cache" formControlName="l3Cache">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="speed">Speed</label>
+            <input type="text" class="form-control" id="speed" formControlName="speed">
+        </div>
+        <div class="col-md-12">
+            <label class="labels" for="socketType">Socket Type</label>
+            <select class="custom-select" (change)="changeSocketType($event)" class="form-control" id="socketType" formControlName="socketType">
+                <option *ngFor="let cpuType of getCpuSocketTypeArray()" [ngValue]="cpuType">{{getCpuSocketType(cpuType)}}</option>
+            </select>
+        </div>   
+    </div>   
+</form>

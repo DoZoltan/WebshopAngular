@@ -1,0 +1,14 @@
+.ag-grid{
+    width: 300px; 
+    height: 100vh;
+    padding: 20px 20px 20px 0px;
+}
+
+.inlineButtonContainer{
+    display: flex;
+    justify-content: space-between;
+
+    .inlineButton{
+        display: inline-block;
+    }
+}

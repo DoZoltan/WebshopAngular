@@ -7,6 +7,7 @@ import { BaseProductService } from './base-product.service';
 import { CpuSocketEnum } from 'src/app/enums/cpu-socket-enum';
 import { Observable } from 'rxjs';
 import { RamSocketEnum } from 'src/app/enums/ram-socket-enum';
+import { IProductGridDataDTO } from 'src/app/interfaces/DTOs/iproduct-grid-data-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,18 @@ export class MotherboardService extends BaseProductService<IMotherboard> {
     super(http, urlProvider.MOTHERBOARD);
   }
 
-  GetMotherboardsByCPU(cpuSocket: CpuSocketEnum): Observable<IMotherboard>
+  getMotherboardsByCPU(cpuSocket: CpuSocketEnum): Observable<IMotherboard>
   {
     return this.http.get<IMotherboard>(`${this.url}/cpuSocket/${cpuSocket}`);
   }
 
-  GetMotherboardsByMemory(memorySocket: RamSocketEnum): Observable<IRam>
+  getMotherboardsByMemory(memorySocket: RamSocketEnum): Observable<IRam>
   {
     return this.http.get<IRam>(`${this.url}/memorySocket/${memorySocket}`);
+  }
+
+  getMotherboardsForGridData(): Observable<IProductGridDataDTO[]>
+  {
+    return this.http.get<IProductGridDataDTO[]>(`${this.url}/grid/`);
   }
 }
