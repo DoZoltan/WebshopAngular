@@ -28,9 +28,7 @@ export class RamFormComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder) { }
 
-  ngOnInit(): void 
-  {
-
+  ngOnInit(): void {
   }
 
   ngOnChanges()
