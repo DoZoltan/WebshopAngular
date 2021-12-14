@@ -66,13 +66,16 @@ export class UpdateComponent implements OnInit {
   {
     switch (this.selectedProduct.productType) {
       case ProductTypeEnum.Cpu:
-        this.cpuService.update(this.selectedProduct.id, this.cpuFormComponent.cpuForm.value).subscribe(updated => console.log(updated));
+        this.cpuService.update(this.selectedProduct.id, this.cpuFormComponent.cpuForm.value).subscribe((data) => {},
+        (error) => {this.showUpdateResult("Update has failed")}, () => { this.showUpdateResult("Successful update"); this.refreshGridDataAfterSuccessfulUpdate() });
         break;
       case ProductTypeEnum.Ram:
-        this.ramService.update(this.selectedProduct.id, this.ramFormComponent.ramForm.value).subscribe(updated => console.log(updated));
+        this.ramService.update(this.selectedProduct.id, this.ramFormComponent.ramForm.value).subscribe((data) => {},
+        (error) => {this.showUpdateResult("Update has failed")}, () => { this.showUpdateResult("Successful update"); this.refreshGridDataAfterSuccessfulUpdate() });
         break;
       case ProductTypeEnum.Motherboard:
-        this.motherboardService.update(this.selectedProduct.id, this.motherboardFormComponent.motherboardForm.value).subscribe(updated => console.log(updated));
+        this.motherboardService.update(this.selectedProduct.id, this.motherboardFormComponent.motherboardForm.value).subscribe((data) => {},
+        (error) => {this.showUpdateResult("Update has failed")}, () => { this.showUpdateResult("Successful update"); this.refreshGridDataAfterSuccessfulUpdate() });
         break;
       default:
         console.log('The selected product\'s type is invalid');
@@ -98,5 +101,17 @@ export class UpdateComponent implements OnInit {
     {
       return false;
     }
+  }
+
+  // It will open a nice popup in the future
+  showUpdateResult(resultMassage: string)
+  {
+    window.alert(resultMassage);
+  }
+
+  refreshGridDataAfterSuccessfulUpdate()
+  {
+    let currentSearchInputContent =	(document.querySelector('.search-input') as HTMLInputElement).value;
+    this.searchService.searchByProductName(currentSearchInputContent).subscribe(result => this.products = result);
   }
 }
